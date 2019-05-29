@@ -2,3 +2,9 @@
 # currently.
 
 class Player:
+    def __init__(self, health, items, room):
+        self.health = health
+        self.items = items
+        self.room = room
+    
+    

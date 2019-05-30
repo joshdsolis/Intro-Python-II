@@ -56,18 +56,27 @@ while True:
     print(josh.current_room)
     print(room[josh.current_room].description)
 
-    move = input("Which direction would you like to go? N, S, E, or W? ")
+    move = input("Which direction would you like to go? N, S, E, or W?: ")
 
-    if move != ("N" or "S" or "E" or "W"):
-        input("Please enter a valid direction: N, S, E, W ")
-
+    if move not in ["N", "S", "E", "W", "n", "s", "e", "w"]:
+        input("Please enter a valid direction: N, S, E, W: ")
+    '''
+    if move =="N":
+        josh.current_room = room[josh.current_room].n_to
+        print(room[josh.current_room].description)
+    elif move == "S":
+        josh.current_room = room[josh.current_room].s_to
+    elif move == "E":
+        josh.current_room = room[josh.current_room].e_to
+    
+    '''
     move = move.lower()
     print(move)
 
 ## travel not working yet
     def travel(player, dir):
         try:
-            player.current_room = getattr(room[player.current_room], f'{dir}_to')
+            player.current_room = getattr(room[player.current_room], f'{dir}_to').title.lower().split(" ")[0]
         except AttributeError:
             print('\n')
             print(f'There is no path in that direction, {player.name}.')

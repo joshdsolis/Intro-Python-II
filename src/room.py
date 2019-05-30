@@ -5,5 +5,4 @@ class Room:
     def __init__(self, title, description):
         self.title = title
         self.description = description
-    def n_to(self, north):
-        self.north = north
+    

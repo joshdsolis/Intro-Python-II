@@ -53,14 +53,25 @@ print(josh)
 # If the user enters "q", quit the game.
 
 while True:
-    print(josh.room)
-    print(room[josh.room].description)
+    print(josh.current_room)
+    print(room[josh.current_room].description)
 
-    move = input("Which direction would you like to go? N, S, E, or W?")
+    move = input("Which direction would you like to go? N, S, E, or W? ")
 
-    if move != "N" or "S" or "E" or "W":
-        input("Please enter a valid direction: N, S, E, W")
+    if move != ("N" or "S" or "E" or "W"):
+        input("Please enter a valid direction: N, S, E, W ")
 
     move = move.lower()
+    print(move)
 
-    room[josh.room].f""{move}
+## travel not working yet
+    def travel(player, dir):
+        try:
+            player.current_room = getattr(room[player.current_room], f'{dir}_to')
+        except AttributeError:
+            print('\n')
+            print(f'There is no path in that direction, {player.name}.')
+
+    travel(josh, move)
+
+    print(josh.current_room)

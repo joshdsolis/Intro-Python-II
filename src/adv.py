@@ -76,11 +76,14 @@ while True:
 ## travel not working yet
     def travel(player, dir):
         try:
-            player.current_room = getattr(room[player.current_room], f'{dir}_to').title.lower().split(" ")[0]
+            if getattr(room[player.current_room], f'{dir}_to').title.lower().split(" ")[0] == 'grand':
+                player.current_room = getattr(room[player.current_room], f'{dir}_to').title.lower().split(" ")[1]
+            else:
+                player.current_room = getattr(room[player.current_room], f'{dir}_to').title.lower().split(" ")[0]
         except AttributeError:
             print('\n')
             print(f'There is no path in that direction, {player.name}.')
 
     travel(josh, move)
-
+    print("\n")
     print(josh.current_room)
